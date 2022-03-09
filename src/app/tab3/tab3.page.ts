@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskserviceService } from "../services/taskservice.service"
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,24 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  public tasks: string[];
+  
+
+  constructor(private taskService: TaskserviceService) {
+    this.tasks = taskService.getImportantTasks();
+  
+  }
+
+
+  public removeTask(pos: number) {
+    this.taskService.removeCompleteTask(pos);
+    this.tasks = this.taskService.getImportantTasks();
+  }
+
+  public unImportantTask(pos: number) {
+    this.taskService.unImportantTask(pos);
+    this.tasks = this.taskService.getImportantTasks();
+  }
+
 
 }

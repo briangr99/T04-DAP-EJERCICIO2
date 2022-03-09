@@ -32,4 +32,9 @@ export class Tab1Page {
     this.tasks = this.taskService.getTasks();
   }
 
+  public importantTask(pos:number){
+    this.taskService.importantTask(pos);
+    this.tasks = this.taskService.getTasks();
+  }
+
 }
